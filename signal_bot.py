@@ -188,10 +188,11 @@ def calc_nw(close):
     for i in range(LB-1,n):
         seg=close[i-LB+1:i+1][::-1]
         nw_out[i]=np.dot(coefs,seg)/den
-    abs_diff=np.abs(close-nw_out)
     nw_mae=np.full(n,np.nan)
     for i in range(LB-1,n):
-        nw_mae[i]=np.mean(abs_diff[i-LB+1:i+1])
+        seg_c=close[i-LB+1:i+1]; seg_n=nw_out[i-LB+1:i+1]
+        valid=~np.isnan(seg_n)
+        if valid.sum()>0: nw_mae[i]=np.mean(np.abs(seg_c[valid]-seg_n[valid]))
     return nw_out, nw_out+NW_MULT*nw_mae, nw_out-NW_MULT*nw_mae
 
 def calc_atr(df):
@@ -386,4 +387,3 @@ def run():
 
 if __name__ == "__main__":
     run()
-    
