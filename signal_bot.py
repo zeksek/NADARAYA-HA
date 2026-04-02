@@ -35,10 +35,10 @@ SYMBOLS = [
 
 NW_H        = 8.0
 NW_MULT     = 3.0
-NW_LOOKBACK = 500
+NW_LOOKBACK = 300
 ATR_PERIOD  = 14
 ATR_MULT    = 2.0
-KLINES_LIMIT = 600
+KLINES_LIMIT = 400
 
 # Saat başı tarama — her saatin 1. dakikasında çalışır
 # Aradaki dakikalarda sadece açık pozisyon stop kontrolü yapılır
@@ -386,3 +386,4 @@ def run():
 
 if __name__ == "__main__":
     run()
+    
