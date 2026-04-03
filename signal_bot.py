@@ -302,7 +302,7 @@ def check_candle(df):
     durum  = "BANT USTU" if above else ("BANT ALTI" if below else "icinde")
 
     logger.info(
-        f"[{df.index[-1].tz_localize('UTC').astimezone(TR_TZ).strftime('%H:%M')} TR] "
+        f"[{symbol}] [{df.index[-1].tz_localize('UTC').astimezone(TR_TZ).strftime('%H:%M')} TR] "
         f"close={close:.6f} ha={ha_color} prev={prev_color} "
         f"NW_U={nw_upper:.6f} NW_L={nw_lower:.6f} "
         f"u={dist_u:+.1f}% l={dist_l:+.1f}% → {durum}"
@@ -467,3 +467,4 @@ def run():
 
 if __name__ == "__main__":
     run()
+                
