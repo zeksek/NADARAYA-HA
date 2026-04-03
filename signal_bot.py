@@ -268,7 +268,7 @@ def compute(df):
 # ══════════════════════════════════════════════════
 #  🎯  SİNYAL — SON KAPANMIŞ MUM
 # ══════════════════════════════════════════════════
-def check_candle(df):
+def check_candle(df, symbol):
     """
     Son kapanmış muma bak (iloc[-1] — tarama xx:02'de yapılır,
     o zaman Binance'de son mum kapanmış olur)
@@ -360,7 +360,7 @@ def scan(symbol, positions):
             return {"action":"EXIT","symbol":symbol,"reason":reason,
                     "close":last["close"],"nw_mid":last["nw_mid"]}
     else:
-        sig, _ = check_candle(df)
+        sig, _ = check_candle(df, symbol)
         if sig:
             return {"action":"ENTRY","symbol":symbol,**sig}
 
